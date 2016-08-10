@@ -2979,6 +2979,7 @@ void() nextround =
 		if (self.pantscolor_)
 		{
 			PutClientInServer();
+			self.team = (self.color_ & 15) + 1;
 			SetColorName(MSG_ALL, self);
 		}
 		self = self.next;
