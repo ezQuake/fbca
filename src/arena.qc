@@ -270,6 +270,7 @@ void() item_artifact_invisibility;
 void() item_artifact_super_damage;
 void() SUB_regen;
 void() BotWaterJumpFix;
+void(float to, entity client) SetColorName;
 
 // impulses
 float IMP_DROP		= 71;
@@ -2976,7 +2977,11 @@ void() nextround =
 		if (self.tracking)
 			track_off();
 		if (self.pantscolor_)
+		{
 			PutClientInServer();
+			self.team = (self.color_ & 15) + 1;
+			SetColorName(MSG_ALL, self);
+		}
 		self = self.next;
 	}
 	round = round + 1;
